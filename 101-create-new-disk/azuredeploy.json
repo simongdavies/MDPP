@@ -1,0 +1,33 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": 
+    {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().Location]"
+        },
+        "diskName": {
+            "type": "string",
+            "defaultValue": "[uniquestring(resourceGroup().ID)]"
+        }
+    },
+    "resources": [
+	{
+            "type": "Microsoft.Compute/disks",
+	        "apiVersion": "2016-04-30-preview",
+            "name": "[parameters('diskName')]",
+            "location": "[parameters('location')]",
+            "properties": 
+            {
+                "creationData": {
+                    "createOption": "Empty"
+                },
+                "accountType": "Standard_LRS",
+                "diskSizeGB": "100"
+            
+            }
+        }
+    ]
+}
+
