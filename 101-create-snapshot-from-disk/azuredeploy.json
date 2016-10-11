@@ -29,13 +29,13 @@
             },
             "type": "Microsoft.Compute/snapshots",
 	        "apiVersion": "2016-04-30-preview",
-            "name": "[concat(parameters('diskName'),'-snapshot']",
+            "name": "[concat(parameters('diskName'),'snapshot')]",
             "location": "[parameters('location')]",
             "properties": 
             {
                 "creationData": {
                     "createOption": "Copy", 
-	    	        "sourceUri":  "[resourceId('Microsoft.Compute/Disks',paramaters('diskName))]" 
+	    	        "sourceUri":  "[resourceId('Microsoft.Compute/Disks',parameters('diskName'))]" 
                 }           
             }
         }

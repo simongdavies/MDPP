@@ -6,17 +6,18 @@
         "region": {
             "type": "string"
         },
-	"imageName": {
+	    "imageName": {
             "type": "string"
         },
-	"imageOSDiskBlobUri" : {
-            "type": "string"
+	    "imageOSDiskBlobUri" : {
+            "type": "string",
+            "defaultValue": "https://sdimagetest.blob.core.windows.net/vhds/TestVM20169717458.vhd"
         }
     },
     "resources": [
 	{
             "type": "Microsoft.Compute/images",
-	    "apiVersion": "2016-04-30-preview",
+	        "apiVersion": "2016-04-30-preview",
             "name": "[parameters('imageName')]",
             "location": "[parameters('region')]",
             "properties": 
@@ -26,10 +27,10 @@
                     "osDisk" : 
                     { 
                         "osType" : "windows",
-			"osState": "Generalized",
-			"blobUri": "[parameters('imageOSDiskBlobUri')]",
-			"caching": "ReadWrite",
-			"storageAccountType": "Standard_LRS"
+                        "osState": "Generalized",
+                        "blobUri": "[parameters('imageOSDiskBlobUri')]",
+                        "caching": "ReadWrite",
+                        "storageAccountType": "Standard_LRS"
                     }
                 }
             }
