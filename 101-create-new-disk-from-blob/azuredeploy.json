@@ -1,0 +1,34 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": 
+    {
+        "location": {
+            "type": "string"
+        },
+	    "diskName": {
+            "type": "string"
+        },
+	    "sourceDiskBlobUri" : {
+            "type": "string",
+            "defaultValue": "https://sdimagetest.blob.core.windows.net/vhds/TestVM20169717458.vhd"
+        }
+    },
+    "resources": [
+	{
+            "type": "Microsoft.Compute/disks",
+	        "apiVersion": "2016-04-30-preview",
+            "name": "[parameters('diskName')]",
+            "location": "[parameters('location')]",
+            "properties": 
+            {
+                "creationData": {
+                    "createOption": "Import",
+                    "sourceUri":"[parameters('sourceDiskBlobUri')]"
+                },
+                "accountType": "Standard_LRS",
+                "diskSizeGB": "512"
+            }
+        }
+    ]
+}
